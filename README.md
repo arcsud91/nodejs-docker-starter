@@ -95,8 +95,6 @@ To make this easier for everyone, the `__tests__` directory contain two files:
   - `zz-teardown.specs.js` -- Disconnects, clears, flushes and detaches the child process handle from
   the primary process. Disconnect from the database, end the Redis cluster: do it here.
 
-**Oh, I just can not.**
-
 `TestBase` is an abstract class which contains a lot of reusable code you can use to quickly write tests. It's **only used in integration tests** since they require a considerable amount of setup.
 
 In the interest of brevity, I will leave the exploration part to the reader. It's pretty straight forward.
