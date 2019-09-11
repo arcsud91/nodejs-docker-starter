@@ -1,0 +1,24 @@
+version: '3.5'
+services:
+    api:
+        build: ../../
+        ports:
+            - 3000:3000
+        depends_on:
+            - db
+            - rabbitmq
+            - sessions
+        environment:
+            - NODE_ENV=development
+            - DATABASE_HOST=db
+            - DATABASE_USERNAME=root
+            - DATABASE_PASSWORD=password
+            - RABBITMQ_HOST=rabbitmq
+            - REDIS_SESSIONS_HOST=sessions
+            - REDIS_SESSIONS_PORT=6379
+        working_dir: /usr/code
+        entrypoint: npm run start
+    db:
+        volumes:
+            - ../../data:/var/lib/mysql
+    

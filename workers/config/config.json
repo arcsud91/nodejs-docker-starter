@@ -1,0 +1,15 @@
+{
+    "rabbitmq": {
+        "protocol": "amqp",
+        "hostname": { "$env": "RABBITMQ_HOST", "$default": "localhost" },
+        "port": { "$env": "RABBITMQ_PORT", "$default": 5672 },
+        "username": { "$env": "RABBITMQ_USER", "$default": "root" },
+        "password": { "$env": "RABBITMQ_PASS", "$default": "password" },
+        "channelMax": { "$env": "RABBITMQ_CHANNEL_MAX", "$default": 25 }
+    },
+
+    "workers": {
+        "name": { "$env": "WORKER_NAME", "$default": "deferred-processing" }
+    },
+
+}

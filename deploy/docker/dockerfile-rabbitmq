@@ -1,0 +1,8 @@
+FROM rabbitmq:3.7-management
+
+COPY ./config/rabbitmq/enabled_plugins /etc/rabbitmq/enabled_plugins
+
+EXPOSE 8080
+EXPOSE 15672
+EXPOSE 5672
+EXPOSE 5671

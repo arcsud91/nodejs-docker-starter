@@ -1,0 +1,183 @@
+{
+    "application": {
+        "uploads": {
+            "fileSizeLimit": {
+                "$env": "FILE_SIZE_LIMIT",
+                "$default": 5242880
+            },
+            "tempFileDir": {
+                "$env": "TEMP_FILE_DIR",
+                "$default": "/tmp"
+            },
+            "acceptedMimeTypes": [
+                "image/jpeg",
+                "image/png",
+                "application/x-bzip",
+                "application/x-bzip2",
+                "application/x-7z-compressed",
+                "application/zip",
+                "application/pdf",
+                "text/csv",
+                "multipart/form-data",
+                "application/vnd.ms-excel"
+            ]
+        },
+        "confirmUrl": {
+            "$filter": {
+                "$env": "NODE_ENV"
+            },
+            "production": "https://app.sample-app.com/welcome",
+            "$default": "http://staging.app.sample-app.com/welcome"
+        }
+    },
+    "aws": {
+        "access": {
+            "accessKeyId": {
+                "$env": "AWS_ACCESS_KEY_ID",
+                "$default": "secret-id-to-be-added"
+            },
+            "secretAccessKey": {
+                "$env": "AWS_SECRET_ACCESS_KEY",
+                "$default": "secret-key-to-be-added"
+            },
+            "region": "ap-south-1"
+        },
+        "policy": {
+            "$filter": {
+                "$env": "NODE_ENV"
+            },
+            "production": "isProduction=true",
+            "$default": "isTest=true"
+        }
+    },
+    "network": {
+        "port": {
+            "$env": "API_PORT",
+            "$default": 3000
+        }
+    },
+    "logging": {
+        "name": "sample-app-backend",
+        "level": {
+            "$filter": {
+                "$env": "NODE_ENV"
+            },
+            "production": "info",
+            "testing": "error",
+            "$default": "trace"
+        },
+        "prettyPrint": {
+            "$filter": {
+                "$env": "NODE_ENV"
+            },
+            "production": false,
+            "$default": false
+        }
+    },
+    "database": {
+        "client": "mysql",
+        "connection": {
+            "database": {
+                "$env": "DATABASE_NAME",
+                "$default": "sample-app"
+            },
+            "user": {
+                "$env": "DATABASE_USERNAME",
+                "$default": "root"
+            },
+            "password": {
+                "$env": "DATABASE_PASSWORD",
+                "$default": "password"
+            },
+            "host": {
+                "$env": "DATABASE_HOST",
+                "$default": "127.0.0.1"
+            }
+        },
+        "pool": {
+            "min": 2,
+            "max": 5
+        }
+    },
+    "mongodb": {
+        "connection": {
+            "host": {
+                "$env": "MONGODB_HOST",
+                "$default": "127.0.0.1"
+            },
+            "port": {
+                "$env": "MONGODB_PORT",
+                "$default": 27017
+            },
+            "username": {
+                "$env": "MONGODB_USERNAME",
+                "$default": "root"
+            },
+            "password": {
+                "$env": "MONGODB_PASSWORD",
+                "$default": "password"
+            }
+        },
+        "options": {
+            "useNewUrlParser": true,
+            "useCreateIndex": true,
+            "useFindAndModify": false,
+            "dbName": {
+                "$env": "MONGODB_DATABASE_NAME",
+                "$default": "sample-app"
+            }
+        }
+    },
+    "rabbitmq": {
+        "protocol": "amqp",
+        "hostname": {
+            "$env": "RABBITMQ_HOST",
+            "$default": "localhost"
+        },
+        "port": {
+            "$env": "RABBITMQ_PORT",
+            "$default": 5672
+        },
+        "username": {
+            "$env": "RABBITMQ_USER",
+            "$default": "root"
+        },
+        "password": {
+            "$env": "RABBITMQ_PASS",
+            "$default": "password"
+        },
+        "channelMax": {
+            "$env": "RABBITMQ_CHANNEL_MAX",
+            "$default": 25
+        }
+    },
+    "workers": {
+        "name": {
+            "$env": "WORKER_NAME",
+            "$default": "deferred-processing"
+        }
+    },
+    "sessions": {
+        "host": {
+            "$env": "REDIS_SESSIONS_HOST",
+            "$default": "127.0.0.1"
+        },
+        "port": {
+            "$env": "REDIS_SESSIONS_PORT",
+            "$default": 6380
+        }
+    },
+    "security": {
+        "jwtSigningSecret": {
+            "$env": "JWT_SIGNING_SECRET",
+            "$default": "9pdpEXQfjYax2arAAzYmK7!Uh6w#RnUphSvwqHTeqDtQ49%V9d"
+        },
+        "sessionExpiryTime": {
+            "$filter": {
+                "$env": "NODE_ENV"
+            },
+            "production": 172800000,
+            "$default": 50
+        },
+    }
+}

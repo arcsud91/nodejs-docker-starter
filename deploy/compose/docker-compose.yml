@@ -1,0 +1,50 @@
+version: '3.5'
+services:
+    rabbitmq:
+            build:
+                dockerfile: ./docker/dockerfile-rabbitmq
+                context: ..
+            hostname: sample-app
+            environment:
+                - RABBITMQ_NODENAME=rabbit-1@sample-app
+                - RABBITMQ_DEFAULT_USER=root
+                - RABBITMQ_DEFAULT_PASS=password
+            ports:
+                - 15672:15672
+                - 5672:5672
+                - 5671:5671
+    db:
+        image: mariadb
+        restart: always
+        volumes:
+            -
+                type: bind
+                source: ../../data
+                target: /var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=sample-app
+        ports:
+            - 3306:3306
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+        ports:
+            - 8099:80
+    sessions:
+        image: redis:latest
+        expose:
+            - 6379
+        ports:
+            - 6380:6379
+    redis-commander:
+        container_name: redis-commander
+        hostname: redis-commander
+        image: rediscommander/redis-commander:latest
+        restart: always
+        environment:
+            - REDIS_HOSTS=local:sessions:6379
+        ports:
+            - "8081:8081"
