@@ -194,6 +194,3 @@ The `message` should be a clear, crisp, concise giving a bird's eye view of the 
 
 # Conclusion
 This boilerplate has been created keeping in mind the basic setup required to kick-off the development. If you feel any changes are required feel free to raise a PR.
-
-## Metadata
-Maintainer - [Archit Sud](@arcsud91)
