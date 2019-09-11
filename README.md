@@ -71,10 +71,7 @@ This file.
 Right off the bat, we have the `__tests__` directory which will house all the test files. It is further bifurcated into `unit`
 and `integration` based on our requirements.
 
-The file scoping is based on the CSS Module standard: `[prefix]-[module]-[method?].specs.js`. For example,
-if we have a `crypto` module in `src/helpers`, it'll be scoped as: `helpers-crypto.specs.js`. If you have a
-very complicated method or module, you might want to break it down into it's formal components like
-`helpers-crypto-rsa-calculateTotient.specs.js`.
+The file scoping is based on the CSS Module standard: `[prefix]-[module]-[method?].specs.js`.
 
 All the tests related to the routes should be placed in the `routes` sub-directory.
 
